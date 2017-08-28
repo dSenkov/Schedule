@@ -1,8 +1,12 @@
 package domain.POJOs;
 
+import org.springframework.stereotype.Repository;
+
+import javax.persistence.Entity;
 import java.util.ArrayList;
 import java.util.List;
 
+@Entity
 public class Faculty {
 
     private Integer id;
@@ -27,27 +31,21 @@ public class Faculty {
     public Integer getId() {
         return id;
     }
-
     public void setId(Integer id) {
         this.id = id;
     }
-
     public String getName() {
         return name;
     }
-
     public void setName(String name) {
         this.name = name;
     }
-
     public List<Group> getGroups() {
         return groups;
     }
-
     public void setGroups(List<Group> groups) {
         this.groups = groups;
     }
-
 
     public void addGroup (Group group){
         this.groups.add(group);

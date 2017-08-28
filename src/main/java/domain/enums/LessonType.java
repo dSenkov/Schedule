@@ -3,5 +3,6 @@ package domain.enums;
 public enum LessonType {
     LECTURE,
     PRACTISE,
-    LAB
+    LAB,
+    EXAM
 }

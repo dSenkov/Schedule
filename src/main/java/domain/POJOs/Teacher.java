@@ -4,37 +4,30 @@ import domain.enums.LessonType;
 import org.springframework.stereotype.Repository;
 
 import javax.persistence.Entity;
-import java.util.ArrayList;
 import java.util.List;
 
 @Entity
-public class Group {
+public class Teacher {
 
     private Integer id;
     private String name;
-    private Integer course;
-    private Integer facultyId;
     private List<Lesson> lessons;
     private List<Lesson> exams;
 
-    public Group() {
+    public Teacher() {
         this.lessons = lessons;
         this.exams = exams;
     }
 
-    public Group(String name, Integer course, Integer facultyId) {
+    public Teacher(String name) {
         this.name = name;
-        this.course = course;
-        this.facultyId = facultyId;
-        this.lessons = new ArrayList<>();
-        this.exams = new ArrayList<>();
+        this.lessons = lessons;
+        this.exams = exams;
     }
 
-    public Group(Integer id, String name, Integer course, Integer facultyId, List<Lesson> lessons, List<Lesson> exams) {
+    public Teacher(Integer id, String name, List<Lesson> lessons, List<Lesson> exams) {
         this.id = id;
         this.name = name;
-        this.course = course;
-        this.facultyId = facultyId;
         this.lessons = lessons;
         this.exams = exams;
     }
@@ -50,18 +43,6 @@ public class Group {
     }
     public void setName(String name) {
         this.name = name;
-    }
-    public Integer getCourse() {
-        return course;
-    }
-    public void setCourse(Integer course) {
-        this.course = course;
-    }
-    public Integer getFacultyId() {
-        return facultyId;
-    }
-    public void setFacultyId(Integer facultyId) {
-        this.facultyId = facultyId;
     }
     public List<Lesson> getLessons() {
         return lessons;

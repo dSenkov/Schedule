@@ -1,7 +1,7 @@
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
 <%--
   Created by IntelliJ IDEA.
-  User: Денис
+  Staff: Денис
   Date: 8/24/2017
   Time: 2:41 PM
   To change this template use File | Settings | File Templates.
@@ -12,8 +12,12 @@
     <title>Welcome</title>
 </head>
 <body>
-        <form:form >
+    <p>
+       <a href="/scheduleForStudents"><button>Расписание для студентов</button></a>
+       <a href="/scheduleForTeacher"><button>Расписание для преподователей</button></a>
+    </p>
+       <hr>
+       <a href="/login"><button>Панель для сотрудников</button></a>
 
-        </form:form>
 </body>
 </html>
