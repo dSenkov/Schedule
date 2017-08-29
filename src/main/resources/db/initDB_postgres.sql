@@ -1,0 +1,59 @@
+
+CREATE TABLE users (
+  id          SERIAL PRIMARY KEY,
+  login       TEXT NOT NULL UNIQUE,
+  password    TEXT NOT NULL,
+  name        TEXT NOT NULL,
+  role        INTEGER NOT NULL
+);
+
+CREATE TABLE facultys (
+  id          SERIAL PRIMARY KEY,
+  name        TEXT NOT NULL UNIQUE
+);
+
+CREATE TABLE groups (
+  id          SERIAL PRIMARY KEY,
+  name        TEXT NOT NULL UNIQUE,
+  course      INTEGER NOT NULL,
+  faculty_id  INTEGER NOT NULL,
+  FOREIGN KEY (faculty_id) REFERENCES facultys (id) ON DELETE CASCADE
+);
+
+CREATE TABLE teachers (
+  id          SERIAL PRIMARY KEY,
+  name        TEXT NOT NULL,
+  rank        TEXT NOT NULL
+);
+
+CREATE TABLE exams (
+  id          SERIAL PRIMARY KEY,
+  subject     TEXT NOT NULL,
+  datetime    TIMESTAMP WITH TIME ZONE NOT NULL,
+  building    INTEGER NOT NULL,
+  classroom   INTEGER NOT NULL,
+  group_id    INTEGER NOT NULL,
+  teacher_id  INTEGER NOT NULL,
+  FOREIGN KEY (group_id)    REFERENCES groups   (id) ON DELETE CASCADE,
+  FOREIGN KEY (teacher_id)  REFERENCES teachers (id) ON DELETE CASCADE
+);
+
+CREATE TABLE lessons (
+  id          SERIAL PRIMARY KEY,
+  firstweek   BOOLEAN NOT NULL,
+  day         TEXT NOT NULL,
+  number      INTEGER NOT NULL,
+  subject     INTEGER NOT NULL,
+  type        TEXT NOT NULL,
+  building    INTEGER NOT NULL,
+  classroom   INTEGER NOT NULL,
+  teacher_id  INTEGER NOT NULL,
+  FOREIGN KEY (teacher_id)  REFERENCES teachers (id) ON DELETE CASCADE
+);
+
+CREATE TABLE lessons_groups (
+  lesson_id   INTEGER NOT NULL,
+  group_id    INTEGER NOT NULL,
+  FOREIGN KEY (lesson_id) REFERENCES lessons  (id) ON DELETE CASCADE,
+  FOREIGN KEY (group_id)  REFERENCES groups   (id) ON DELETE CASCADE
+);
