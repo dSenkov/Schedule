@@ -6,7 +6,7 @@ import org.springframework.stereotype.Repository;
 import javax.persistence.Entity;
 
 @Entity
-public class Staff {
+public class User {
 
     private Integer id;
     private String login;
@@ -14,16 +14,16 @@ public class Staff {
     private String name;
     private UserRole role;
 
-    public Staff() { }
+    public User() { }
 
-    public Staff(String login, String password, String name, UserRole role) {
+    public User(String login, String password, String name, UserRole role) {
         this.login = login;
         this.password = password;
         this.name = name;
         this.role = role;
     }
 
-    public Staff(Integer id, String login, String password, String name, UserRole role) {
+    public User(Integer id, String login, String password, String name, UserRole role) {
         this.id = id;
         this.login = login;
         this.password = password;

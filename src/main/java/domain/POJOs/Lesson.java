@@ -1,8 +1,6 @@
 package domain.POJOs;
 
 import domain.enums.LessonType;
-import domain.users.Staff;
-import org.springframework.stereotype.Repository;
 
 import javax.persistence.Entity;
 import java.time.DayOfWeek;

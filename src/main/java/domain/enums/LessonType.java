@@ -4,5 +4,5 @@ public enum LessonType {
     LECTURE,
     PRACTISE,
     LAB,
-    EXAM
+    CONSULTATION
 }

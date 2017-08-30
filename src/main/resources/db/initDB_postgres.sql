@@ -57,3 +57,12 @@ CREATE TABLE lessons_groups (
   FOREIGN KEY (lesson_id) REFERENCES lessons  (id) ON DELETE CASCADE,
   FOREIGN KEY (group_id)  REFERENCES groups   (id) ON DELETE CASCADE
 );
+
+INSERT INTO users (login, password, name, role)
+VALUES ('user.login', 'user.password', 'UzeRRR', 0);
+INSERT INTO users (login, password, name, role)
+VALUES ('moder.login', 'moder.password', 'ModeRRR', 1);
+INSERT INTO users (login, password, name, role)
+VALUES ('admin.login', 'admin.password', 'AdMiN', 2);
+
+

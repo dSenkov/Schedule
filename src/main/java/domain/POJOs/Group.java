@@ -15,11 +15,11 @@ public class Group {
     private Integer course;
     private Integer facultyId;
     private List<Lesson> lessons;
-    private List<Lesson> exams;
+    private List<Exam> exams;
 
     public Group() {
-        this.lessons = lessons;
-        this.exams = exams;
+        this.lessons = new ArrayList<>();
+        this.exams = new ArrayList<>();
     }
 
     public Group(String name, Integer course, Integer facultyId) {
@@ -30,7 +30,7 @@ public class Group {
         this.exams = new ArrayList<>();
     }
 
-    public Group(Integer id, String name, Integer course, Integer facultyId, List<Lesson> lessons, List<Lesson> exams) {
+    public Group(Integer id, String name, Integer course, Integer facultyId, List<Lesson> lessons, List<Exam> exams) {
         this.id = id;
         this.name = name;
         this.course = course;
@@ -69,23 +69,19 @@ public class Group {
     public void setLessons(List<Lesson> lessons) {
         this.lessons = lessons;
     }
-    public List<Lesson> getExams() {
+    public List<Exam> getExams() {
         return exams;
     }
-    public void setExams(List<Lesson> exams) {
+    public void setExams(List<Exam> exams) {
         this.exams = exams;
     }
 
 
-    public void addLesson(Lesson lesson)
-    {
-        if(lesson.getType() != LessonType.EXAM)
-            this.lessons.add(lesson);
+    public void addLesson(Lesson lesson) {
+        this.lessons.add(lesson);
     }
 
-    public void addExam(Lesson lesson)
-    {
-        if (lesson.getType() == LessonType.EXAM)
-            this.exams.add(lesson);
+    public void addExam(Exam exam) {
+        this.exams.add(exam);
     }
 }
