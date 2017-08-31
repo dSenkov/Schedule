@@ -11,10 +11,7 @@ public class RootController {
         return "mainPage";
     }
 
-    @GetMapping("scheduleForTeacher")
-    public String showChooseTeacherPage(){
-        return "chooseTeacher";
-    }
+
 
     @GetMapping("login")
     public String showLoginPage()
