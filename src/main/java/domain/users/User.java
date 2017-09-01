@@ -3,11 +3,15 @@ package domain.users;
 import domain.enums.UserRole;
 import org.springframework.stereotype.Repository;
 
-import javax.persistence.Entity;
+import javax.persistence.*;
 
 @Entity
+@Table(name = "users")
 public class User {
 
+    @Id
+    @Access(AccessType.PROPERTY)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
     private String login;
     private String password;

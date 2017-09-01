@@ -1,11 +1,15 @@
 package domain.POJOs;
 
-import javax.persistence.Entity;
+import javax.persistence.*;
 import java.time.LocalDateTime;
 
 @Entity
+@Table(name = "exams")
 public class Exam {
 
+    @Id
+    @Access(AccessType.PROPERTY)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer         id;
     private String          subject;
     private LocalDateTime   dateTime;

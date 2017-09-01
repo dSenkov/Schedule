@@ -18,9 +18,9 @@
                 <label for="faculty">Выберите факультет:</label>
                 <form:select path="faculty" items="${faculty-list} "/>
             </p>
-            <p>
+          <%--  <p>
                 <label for="groups">Выберите группу:</label>
-            </p>
+            </p>--%>
         </form:form>
 </body>
 </html>

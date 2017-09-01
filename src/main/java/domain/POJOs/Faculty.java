@@ -2,13 +2,17 @@ package domain.POJOs;
 
 import org.springframework.stereotype.Repository;
 
-import javax.persistence.Entity;
+import javax.persistence.*;
 import java.util.ArrayList;
 import java.util.List;
 
 @Entity
+@Table(name="facultys")
 public class Faculty {
 
+    @Id
+    @Access(AccessType.PROPERTY)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
     private String name;
     private List<Group> groups;

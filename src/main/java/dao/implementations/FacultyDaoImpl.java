@@ -8,6 +8,7 @@ import org.springframework.transaction.annotation.Transactional;
 
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
+import javax.persistence.Query;
 import java.util.List;
 
 @Repository
@@ -19,6 +20,7 @@ public class FacultyDaoImpl implements FacultyDao {
 
     @Override
     public List<Faculty> getAll() {
-        return null;
+        Query query = this.entityManager.createQuery("SELECT f FROM Faculty f ORDER BY f.name", Faculty.class);
+                return query.getResultList();
     }
 }

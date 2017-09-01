@@ -65,4 +65,10 @@ VALUES ('moder.login', 'moder.password', 'ModeRRR', 1);
 INSERT INTO users (login, password, name, role)
 VALUES ('admin.login', 'admin.password', 'AdMiN', 2);
 
+INSERT INTO facultys (name) VALUES ('ФИВТ');
+INSERT INTO facultys (name) VALUES ('ИПСА');
+INSERT INTO facultys (name) VALUES ('ФПМ');
+INSERT INTO facultys (name) VALUES ('ФТИ');
+INSERT INTO facultys (name) VALUES ('ИТС');
+
 

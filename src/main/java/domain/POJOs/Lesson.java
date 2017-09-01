@@ -2,14 +2,18 @@ package domain.POJOs;
 
 import domain.enums.LessonType;
 
-import javax.persistence.Entity;
+import javax.persistence.*;
 import java.time.DayOfWeek;
 import java.util.ArrayList;
 import java.util.List;
 
 @Entity
+@Table(name = "lessons")
 public class Lesson {
 
+    @Id
+    @Access(AccessType.PROPERTY)
+    @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer     id;
     private boolean     firstWeek;
     private DayOfWeek   day;
