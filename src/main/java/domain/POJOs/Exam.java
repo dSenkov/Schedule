@@ -15,20 +15,26 @@ public class Exam {
     private LocalDateTime   dateTime;
     private Integer         building;
     private Integer         classroom;
-    private Integer         groupId;
-    private Integer         teacherId;
+
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "teacher_id")
+    private Teacher teacher;
+
+    @ManyToOne(fetch = FetchType.LAZY)
+    @JoinColumn(name = "group_id")
+    private Group group;
 
     public Exam() {
     }
 
-    public Exam(Integer id, String subject, LocalDateTime dateTime, Integer building, Integer classroom, Integer groupId, Integer teacherId) {
+    public Exam(Integer id, String subject, LocalDateTime dateTime, Integer building, Integer classroom, Group group, Teacher teacher) {
         this.id = id;
         this.subject = subject;
         this.dateTime = dateTime;
         this.building = building;
         this.classroom = classroom;
-        this.groupId = groupId;
-        this.teacherId = teacherId;
+        this.group = group;
+        this.teacher = teacher;
     }
 
     public Integer getId() {
@@ -61,16 +67,16 @@ public class Exam {
     public void setClassroom(Integer classroom) {
         this.classroom = classroom;
     }
-    public Integer getGroupId() {
-        return groupId;
+    public Teacher getTeacher() {
+        return teacher;
     }
-    public void setGroupId(Integer groupId) {
-        this.groupId = groupId;
+    public void setTeacher(Teacher teacher) {
+        this.teacher = teacher;
     }
-    public Integer getTeacherId() {
-        return teacherId;
+    public Group getGroup() {
+        return group;
     }
-    public void setTeacherId(Integer teacherId) {
-        this.teacherId = teacherId;
+    public void setGroup(Group group) {
+        this.group = group;
     }
 }

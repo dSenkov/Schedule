@@ -15,32 +15,25 @@ public class Group {
     @Access(AccessType.PROPERTY)
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
+
     private String name;
+
     private Integer course;
-    private Integer facultyId;
-    private List<Lesson> lessons;
-    private List<Exam> exams;
+
+    @ManyToOne(fetch = FetchType.EAGER)
+    @JoinColumn(name = "faculty_id")
+    private Faculty faculty;
+
 
     public Group() {
-        this.lessons = new ArrayList<>();
-        this.exams = new ArrayList<>();
+        this.faculty = new Faculty();
     }
 
-    public Group(String name, Integer course, Integer facultyId) {
-        this.name = name;
-        this.course = course;
-        this.facultyId = facultyId;
-        this.lessons = new ArrayList<>();
-        this.exams = new ArrayList<>();
-    }
-
-    public Group(Integer id, String name, Integer course, Integer facultyId, List<Lesson> lessons, List<Exam> exams) {
+    public Group(Integer id, String name, Integer course, Faculty faculty) {
         this.id = id;
         this.name = name;
         this.course = course;
-        this.facultyId = facultyId;
-        this.lessons = lessons;
-        this.exams = exams;
+        this.faculty = faculty;
     }
 
     public Integer getId() {
@@ -61,31 +54,10 @@ public class Group {
     public void setCourse(Integer course) {
         this.course = course;
     }
-    public Integer getFacultyId() {
-        return facultyId;
+    public Faculty getFaculty() {
+        return faculty;
     }
-    public void setFacultyId(Integer facultyId) {
-        this.facultyId = facultyId;
-    }
-    public List<Lesson> getLessons() {
-        return lessons;
-    }
-    public void setLessons(List<Lesson> lessons) {
-        this.lessons = lessons;
-    }
-    public List<Exam> getExams() {
-        return exams;
-    }
-    public void setExams(List<Exam> exams) {
-        this.exams = exams;
-    }
-
-
-    public void addLesson(Lesson lesson) {
-        this.lessons.add(lesson);
-    }
-
-    public void addExam(Exam exam) {
-        this.exams.add(exam);
+    public void setFaculty(Faculty faculty) {
+        this.faculty = faculty;
     }
 }

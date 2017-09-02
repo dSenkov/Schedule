@@ -1,10 +1,10 @@
-package dao.interfaces;
+package service.interfaces;
 
 import domain.POJOs.Teacher;
 
 import java.util.List;
 
-public interface TeacherDao {
+public interface TeacherService {
 
     List<Teacher> getAll();
 }

@@ -20,13 +20,6 @@ public class User {
 
     public User() { }
 
-    public User(String login, String password, String name, UserRole role) {
-        this.login = login;
-        this.password = password;
-        this.name = name;
-        this.role = role;
-    }
-
     public User(Integer id, String login, String password, String name, UserRole role) {
         this.id = id;
         this.login = login;

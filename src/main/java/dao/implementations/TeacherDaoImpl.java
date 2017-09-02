@@ -1,10 +1,9 @@
 package dao.implementations;
 
-import dao.interfaces.FacultyDao;
-import domain.POJOs.Faculty;
+import dao.interfaces.TeacherDao;
+import domain.POJOs.Teacher;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
-
 
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
@@ -13,14 +12,14 @@ import java.util.List;
 
 @Repository
 @Transactional(readOnly = true)
-public class FacultyDaoImpl implements FacultyDao {
+public class TeacherDaoImpl implements TeacherDao {
 
     @PersistenceContext
     private EntityManager entityManager;
 
     @Override
-    public List<Faculty> getAll() {
-        Query query = entityManager.createQuery("SELECT f FROM Faculty f ORDER BY f.name", Faculty.class);
+    public List<Teacher> getAll() {
+        Query query = entityManager.createQuery("SELECT t FROM Teacher t ORDER BY t.name", Teacher.class);
         return query.getResultList();
     }
 }

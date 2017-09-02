@@ -18,9 +18,14 @@
                 <label for="faculty">Выберите факультет:</label>
                 <form:select path="faculty" items="${faculty-list} "/>
             </p>
-          <%--  <p>
+            <%--  <p>
                 <label for="groups">Выберите группу:</label>
             </p>--%>
+            <p>
+                <form:radiobutton path="scheduleType" value="lessons"/>Расписание занятий
+                <form:radiobutton path="scheduleType" value="session"/>Расписание сессии
+            </p>
+            <button type="submit">Загрузить</button>
         </form:form>
 </body>
 </html>
