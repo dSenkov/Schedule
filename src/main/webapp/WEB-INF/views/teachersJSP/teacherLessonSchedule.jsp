@@ -11,6 +11,6 @@
     <title>Title</title>
 </head>
 <body>
-
+<h3>Расписание занятий у преподователя ${teacher.name}</h3>
 </body>
 </html>

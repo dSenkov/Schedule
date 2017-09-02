@@ -71,4 +71,13 @@ INSERT INTO facultys (name) VALUES ('ФПМ');
 INSERT INTO facultys (name) VALUES ('ФТИ');
 INSERT INTO facultys (name) VALUES ('ИТС');
 
+INSERT INTO teachers (name, rank)
+VALUES ('Репникова Наталья Борисовна', 'доцент');
+INSERT INTO teachers (name, rank)
+VALUES ('Новацкий Анатолий Александрович', 'доцент');
+INSERT INTO teachers (name, rank)
+VALUES ('Жеребко Валерий Анатольевич', 'ст. преп.');
+INSERT INTO teachers (name, rank)
+VALUES ('Дорошенко Екатерина Сергеевна', 'ст. преп.');
+
 

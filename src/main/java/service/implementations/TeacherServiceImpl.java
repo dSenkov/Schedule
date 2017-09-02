@@ -18,4 +18,9 @@ public class TeacherServiceImpl implements TeacherService {
     public List<Teacher> getAll() {
         return teacherDao.getAll();
     }
+
+    @Override
+    public Teacher getById(Integer teacherId) {
+        return teacherDao.getById(teacherId);
+    }
 }

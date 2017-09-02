@@ -1,4 +1,5 @@
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
+<%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%--
   Created by IntelliJ IDEA.
   User: Денис
@@ -12,17 +13,19 @@
     <title>Выбор преподователя</title>
 </head>
 <body>
-        <form:form modelAttribute="teacher">
+        <form method="post">
             <p>
-                <label for="teacherName">Имя преподователя:</label>
-                <form:select path="teacherName" items="${teacher-list}"/>
+                <label>Имя преподователя:</label>
+                <select>
+                <c:forEach items="${teacher-list}" var="teacher">
+                    <jsp:useBean id="teacher" class="domain.POJOs.Teacher"/>
+                <option value=${teacher}>${teacher.name}</option>
+                </c:forEach>
+                </select>
             </p>
-            <p>
-                <form:radiobutton path="scheduleType" value="lessons"/>Расписание занятий
-                <form:radiobutton path="scheduleType" value="session"/>Расписание сессии
-            </p>
-            <button type="submit">Загрузить</button>
-        </form:form>
+            <button type="submit" value="/TeacherLessons/${teacher.id}">Расписание занятий</button>
+            <button type="submit" value="/TeacherSession/${teacher.id}">Расписание сессии</button>
+        </form>
 
 </body>
 </html>

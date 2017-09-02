@@ -7,4 +7,5 @@ import java.util.List;
 public interface TeacherDao {
 
     List<Teacher> getAll();
+    Teacher getById (Integer teacherId);
 }

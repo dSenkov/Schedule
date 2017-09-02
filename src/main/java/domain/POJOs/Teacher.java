@@ -26,7 +26,14 @@ public class Teacher {
         this.rank = rank;
     }
 
-
+    @Override
+    public String toString() {
+        return "Teacher{" +
+                "id=" + id +
+                ", name='" + name + '\'' +
+                ", rank='" + rank + '\'' +
+                '}';
+    }
 
     public Integer getId() {
         return id;

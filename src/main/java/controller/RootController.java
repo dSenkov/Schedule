@@ -11,11 +11,4 @@ public class RootController {
         return "mainPage";
     }
 
-
-
-    @GetMapping("login")
-    public String showLoginPage()
-    {
-        return "login";
-    }
 }

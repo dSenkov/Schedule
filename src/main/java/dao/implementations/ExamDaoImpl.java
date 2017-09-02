@@ -19,11 +19,15 @@ public class ExamDaoImpl implements ExamDao {
 
     @Override
     public List<Exam> getByGroup(Integer groupId) {
-        Query query = entityManager.createQuery("SELECT ")
+        Query query = entityManager.createQuery("SELECT e FROM Exam e WHERE e.group.id = :group_id", Exam.class);
+        query.setParameter("group_id", groupId);
+        return query.getResultList();
     }
 
     @Override
     public List<Exam> getByTeacher(Integer teacherId) {
-        return null;
+        Query query = entityManager.createQuery("SELECT e FROM Exam e WHERE e.teacher.id = :teacher_id", Exam.class);
+        query.setParameter("teacher_id", teacherId);
+        return query.getResultList();
     }
 }

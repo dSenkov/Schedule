@@ -22,4 +22,9 @@ public class TeacherDaoImpl implements TeacherDao {
         Query query = entityManager.createQuery("SELECT t FROM Teacher t ORDER BY t.name", Teacher.class);
         return query.getResultList();
     }
+
+    @Override
+    public Teacher getById(Integer teacherId) {
+        return entityManager.find(Teacher.class, teacherId);
+    }
 }
