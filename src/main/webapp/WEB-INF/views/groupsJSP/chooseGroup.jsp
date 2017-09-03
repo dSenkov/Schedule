@@ -13,19 +13,18 @@
     <title>Выбор группы</title>
 </head>
 <body>
-        <form:form>
-            <p>
-                <label for="faculty">Выберите факультет:</label>
-                <form:select path="faculty" items="${faculty-list} "/>
-            </p>
-            <%--  <p>
-                <label for="groups">Выберите группу:</label>
-            </p>--%>
-            <p>
-                <form:radiobutton path="scheduleType" value="lessons"/>Расписание занятий
-                <form:radiobutton path="scheduleType" value="session"/>Расписание сессии
-            </p>
-            <button type="submit">Загрузить</button>
-        </form:form>
+       <form method="post">
+           <p>
+               <label>Факультет:</label>
+               <select>
+                   <c:forEach items="${faculty-list}" var="faculty">
+                       <jsp:useBean id="faculty" class="domain.POJOs.Faculty"/>
+                       <option value="${faculty}">${faculty.name}</option>
+                   </c:forEach>
+               </select>
+           </p>
+           <button type="submit" value="/GroupLessons/${teacher.id}">Расписание занятий</button>
+           <button type="submit" value="/GroupSession/${teacher.id}">Расписание сессии</button>
+       </form>
 </body>
 </html>

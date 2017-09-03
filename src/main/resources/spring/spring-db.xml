@@ -6,8 +6,20 @@
        xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans.xsd http://www.springframework.org/schema/context http://www.springframework.org/schema/context/spring-context.xsd http://www.springframework.org/schema/jdbc http://www.springframework.org/schema/jdbc/spring-jdbc.xsd http://www.springframework.org/schema/tx http://www.springframework.org/schema/tx/spring-tx.xsd">
 
     <jdbc:initialize-database data-source="dataSource" enabled="${jdbc.database.init}">
-        <jdbc:script encoding="utf-8" location="classpath:db/${jdbc.initLocation}"/>
+        <jdbc:script location="classpath:db/${jdbc.initLocation}"/>
+        <jdbc:script encoding="utf-8" location="classpath:db/fillDB.sql"/>
     </jdbc:initialize-database>
+
+    <beans profile="hsqldb">
+        <context:property-placeholder location="classpath:db/hsqldb.properties" system-properties-mode="OVERRIDE"/>
+
+        <bean id="dataSource" class="org.springframework.jdbc.datasource.SimpleDriverDataSource">
+            <property name="driverClass" value="${jdbc.driver}"/>
+            <property name="url" value="${database.url}"/>
+            <property name="username" value="${database.username}"/>
+            <property name="password" value="${database.password}"/>
+        </bean>
+    </beans>
 
     <beans profile="postgres">
         <context:property-placeholder location="classpath:db/postgres.properties" system-properties-mode="OVERRIDE"/>
@@ -61,38 +73,6 @@
         <!-- enable the configuration of transactional behavior based on annotations -->
         <tx:annotation-driven transaction-manager="txManager" proxy-target-class="true"/>
     </beans>
-
-    <beans profile="hsqldb">
-        <context:property-placeholder location="classpath:db/hsqldb.properties" system-properties-mode="OVERRIDE"/>
-
-        <bean id="dataSource" class="org.springframework.jdbc.datasource.SimpleDriverDataSource">
-            <property name="driverClass" value="${jdbc.driver}"/>
-            <property name="url" value="${database.url}"/>
-            <property name="username" value="${database.username}"/>
-            <property name="password" value="${database.password}"/>
-        </bean>
-    </beans>
-
-    <!--<beans profile="jdbc">
-        <context:component-scan base-package="edu.bionic.dao.jdbc"/>
-
-        <bean id="jdbcTemplate" class="org.springframework.jdbc.core.JdbcTemplate">
-            <constructor-arg ref="dataSource"/>
-        </bean>
-
-        <bean id="namedJdbcTemplate" class="org.springframework.jdbc.core.namedparam.NamedParameterJdbcTemplate">
-            <constructor-arg ref="dataSource"/>
-        </bean>
-
-        &lt;!&ndash; Define transaction manager &ndash;&gt;
-        <bean id="txManager" class="org.springframework.jdbc.datasource.DataSourceTransactionManager">
-            &lt;!&ndash; (this dependency is defined somewhere else) &ndash;&gt;
-            <property name="dataSource" ref="dataSource"/>
-        </bean>
-
-        &lt;!&ndash; enable the configuration of transactional behavior based on annotations &ndash;&gt;
-        <tx:annotation-driven transaction-manager="txManager" proxy-target-class="true"/>
-    </beans>-->
 
 
 

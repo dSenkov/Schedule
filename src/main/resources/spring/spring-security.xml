@@ -5,9 +5,9 @@
                 http://www.springframework.org/schema/security http://www.springframework.org/schema/security/spring-security.xsd"
              xmlns:beans="http://www.springframework.org/schema/beans">
 
-    <http>
-        <!--<intercept-url pattern="/login" access="isAnonymous()"/>-->
-        <!--<intercept-url pattern="/register" access="isAnonymous()"/>-->
+   <!-- <http>
+        &lt;!&ndash;<intercept-url pattern="/login" access="isAnonymous()"/>&ndash;&gt;
+        &lt;!&ndash;<intercept-url pattern="/register" access="isAnonymous()"/>&ndash;&gt;
         <intercept-url pattern="/orders" access="isAuthenticated()"/>
         <intercept-url pattern="/admin/**" access="hasAuthority('ADMIN')"/>
 
@@ -16,7 +16,7 @@
         <form-login login-page="/login" default-target-url="/orders"
                     authentication-failure-url="/login?error=true"/>
         <logout logout-success-url="/login?logout=true"/>
-        <!--<csrf disabled="true"/>-->
+        &lt;!&ndash;<csrf disabled="true"/>&ndash;&gt;
     </http>
 
     <beans:bean class="org.springframework.security.crypto.bcrypt.BCryptPasswordEncoder" id="passwordEncoder" />
@@ -27,7 +27,7 @@
         </authentication-provider>
     </authentication-manager>
 
-    <!-- Enable method secure annotations -->
-    <global-method-security secured-annotations="enabled" pre-post-annotations="enabled"/>
+    &lt;!&ndash; Enable method secure annotations &ndash;&gt;
+    <global-method-security secured-annotations="enabled" pre-post-annotations="enabled"/>-->
 
 </beans:beans>

@@ -23,9 +23,5 @@ public class GroupController {
         return "groupsJSP/chooseGroup";
     }
 
-  /*  @PostMapping
-    public String showSchedulePage(@ModelAttribute Group group)
-    {
 
-    }*/
 }

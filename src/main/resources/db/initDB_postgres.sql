@@ -1,3 +1,10 @@
+DROP TABLE IF EXISTS exams;
+DROP TABLE IF EXISTS lessons_groups;
+DROP TABLE IF EXISTS lessons;
+DROP TABLE IF EXISTS teachers;
+DROP TABLE IF EXISTS groups;
+DROP TABLE IF EXISTS facultys;
+DROP TABLE IF EXISTS users;
 
 CREATE TABLE users (
   id          SERIAL PRIMARY KEY,
@@ -43,7 +50,7 @@ CREATE TABLE lessons (
   firstweek   BOOLEAN NOT NULL,
   day         TEXT NOT NULL,
   number      INTEGER NOT NULL,
-  subject     INTEGER NOT NULL,
+  subject     TEXT NOT NULL,
   type        TEXT NOT NULL,
   building    INTEGER NOT NULL,
   classroom   INTEGER NOT NULL,
@@ -58,26 +65,6 @@ CREATE TABLE lessons_groups (
   FOREIGN KEY (group_id)  REFERENCES groups   (id) ON DELETE CASCADE
 );
 
-INSERT INTO users (login, password, name, role)
-VALUES ('user.login', 'user.password', 'UzeRRR', 0);
-INSERT INTO users (login, password, name, role)
-VALUES ('moder.login', 'moder.password', 'ModeRRR', 1);
-INSERT INTO users (login, password, name, role)
-VALUES ('admin.login', 'admin.password', 'AdMiN', 2);
 
-INSERT INTO facultys (name) VALUES ('ФИВТ');
-INSERT INTO facultys (name) VALUES ('ИПСА');
-INSERT INTO facultys (name) VALUES ('ФПМ');
-INSERT INTO facultys (name) VALUES ('ФТИ');
-INSERT INTO facultys (name) VALUES ('ИТС');
-
-INSERT INTO teachers (name, rank)
-VALUES ('Репникова Наталья Борисовна', 'доцент');
-INSERT INTO teachers (name, rank)
-VALUES ('Новацкий Анатолий Александрович', 'доцент');
-INSERT INTO teachers (name, rank)
-VALUES ('Жеребко Валерий Анатольевич', 'ст. преп.');
-INSERT INTO teachers (name, rank)
-VALUES ('Дорошенко Екатерина Сергеевна', 'ст. преп.');
 
 
