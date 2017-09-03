@@ -1,10 +1,6 @@
-DELETE FROM exams;
-ALTER SEQUENCE exams_id_seq RESTART WITH 1;
 DELETE FROM lessons_groups;
 DELETE FROM lessons;
 ALTER SEQUENCE lessons_id_seq RESTART WITH 1;
-DELETE FROM teachers;
-ALTER SEQUENCE teachers_id_seq RESTART WITH 1;
 DELETE FROM groups;
 ALTER SEQUENCE groups_id_seq RESTART WITH 1;
 DELETE FROM facultys;
@@ -24,12 +20,3 @@ INSERT INTO facultys (name) VALUES ('ИПСА');
 INSERT INTO facultys (name) VALUES ('ФПМ');
 INSERT INTO facultys (name) VALUES ('ФТИ');
 INSERT INTO facultys (name) VALUES ('ИТС');
-
-INSERT INTO teachers (name, rank)
-VALUES ('Репникова Наталья Борисовна', 'доцент');
-INSERT INTO teachers (name, rank)
-VALUES ('Новацкий Анатолий Александрович', 'доцент');
-INSERT INTO teachers (name, rank)
-VALUES ('Жеребко Валерий Анатольевич', 'ст. преп.');
-INSERT INTO teachers (name, rank)
-VALUES ('Дорошенко Екатерина Сергеевна', 'ст. преп.');

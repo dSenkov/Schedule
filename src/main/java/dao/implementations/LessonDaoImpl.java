@@ -1,7 +1,6 @@
 package dao.implementations;
 
 import dao.interfaces.LessonDao;
-import domain.POJOs.Exam;
 import domain.POJOs.Lesson;
 import org.springframework.stereotype.Repository;
 import org.springframework.transaction.annotation.Transactional;
@@ -23,10 +22,5 @@ public class LessonDaoImpl implements LessonDao {
       return  null;
     }
 
-    @Override
-    public List<Lesson> getByTeacher(Integer teacherId) {
-        Query query = entityManager.createQuery("SELECT l FROM Lesson l WHERE l.teacher.id = :teacher_id", Lesson.class);
-        query.setParameter("teacher_id", teacherId);
-        return query.getResultList();
-    }
+
 }

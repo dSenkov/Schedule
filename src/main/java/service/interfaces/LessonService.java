@@ -7,5 +7,4 @@ import java.util.List;
 public interface LessonService {
 
     List<Lesson> getByGroup (Integer groupId);
-    List<Lesson> getByTeacher (Integer teacherId);
 }

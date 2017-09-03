@@ -1,9 +1,5 @@
 package domain.POJOs;
-
-
 import javax.persistence.*;
-import java.util.ArrayList;
-import java.util.List;
 
 @Entity
 @Table(name="facultys")
@@ -13,6 +9,7 @@ public class Faculty {
     @Access(AccessType.PROPERTY)
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
+
     private String name;
 
     public Faculty() {

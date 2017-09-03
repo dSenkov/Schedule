@@ -19,8 +19,4 @@ public class LessonServiceImpl implements LessonService {
         return lessonDao.getByGroup(groupId);
     }
 
-    @Override
-    public List<Lesson> getByTeacher(Integer teacherId) {
-        return lessonDao.getByTeacher(teacherId);
-    }
 }
