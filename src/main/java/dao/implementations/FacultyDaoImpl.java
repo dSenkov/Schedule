@@ -23,4 +23,9 @@ public class FacultyDaoImpl implements FacultyDao {
         Query query = entityManager.createQuery("SELECT f FROM Faculty f ORDER BY f.name", Faculty.class);
         return query.getResultList();
     }
+
+    @Override
+    public Faculty getById(Integer facultyId) {
+        return entityManager.find(Faculty.class, facultyId);
+    }
 }

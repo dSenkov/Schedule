@@ -19,4 +19,9 @@ public class FacultyServiceImpl implements FacultyService {
     public List<Faculty> getAll() {
         return facultyDao.getAll();
     }
+
+    @Override
+    public Faculty getById(Integer facultyId) {
+        return facultyDao.getById(facultyId);
+    }
 }

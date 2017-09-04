@@ -18,6 +18,17 @@ public class LessonDaoImpl implements LessonDao {
     private EntityManager entityManager;
 
     @Override
+    public List<Lesson> getAll() {
+        Query query = entityManager.createQuery("SELECT l FROM Lesson l", Lesson.class);
+        return query.getResultList();
+    }
+
+    @Override
+    public Lesson getById(Integer lessonId) {
+        return entityManager.find(Lesson.class, lessonId);
+    }
+
+    @Override
     public List<Lesson> getByGroup(Integer groupId) {
       return  null;
     }

@@ -1,10 +1,10 @@
-package dao.interfaces;
+package service.interfaces;
 
 import domain.POJOs.Group;
 
 import java.util.List;
 
-public interface GroupDao {
+public interface GroupService {
 
     List<Group> getAll();
     Group getById(Integer groupId);

@@ -15,8 +15,19 @@ public class LessonServiceImpl implements LessonService {
     private LessonDao lessonDao;
 
     @Override
+    public List<Lesson> getAll() {
+        return lessonDao.getAll();
+    }
+
+    @Override
+    public Lesson getById(Integer lessonId) {
+        return lessonDao.getById(lessonId);
+    }
+
+    @Override
     public List<Lesson> getByGroup(Integer groupId) {
         return lessonDao.getByGroup(groupId);
     }
+
 
 }

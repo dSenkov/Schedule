@@ -7,4 +7,5 @@ import java.util.List;
 public interface FacultyDao {
 
     List<Faculty> getAll();
+    Faculty getById(Integer facultyId);
 }
