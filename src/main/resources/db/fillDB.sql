@@ -8,10 +8,10 @@ ALTER SEQUENCE facultys_id_seq RESTART WITH 1;
 DELETE FROM users;
 ALTER SEQUENCE users_id_seq RESTART WITH 1;
 
-INSERT INTO users (login, password, name, role)
+/*INSERT INTO users (login, password, name, role)
 VALUES ('user.login', 'user.password', 'UzeRRR', 0);
 INSERT INTO users (login, password, name, role)
-VALUES ('moder.login', 'moder.password', 'ModeRRR', 1);
+VALUES ('moder.login', 'moder.password', 'ModeRRR', 1);*/
 INSERT INTO users (login, password, name, role)
 VALUES ('admin.login', 'admin.password', 'AdMiN', 2);
 
@@ -20,3 +20,19 @@ INSERT INTO facultys (name) VALUES ('ИПСА');
 INSERT INTO facultys (name) VALUES ('ФПМ');
 INSERT INTO facultys (name) VALUES ('ФТИ');
 INSERT INTO facultys (name) VALUES ('ИТС');
+
+INSERT INTO groups (faculty_id, name, course)
+VALUES (1, 'ИА-51', 3);
+INSERT INTO groups (faculty_id, name, course)
+VALUES (1, 'ИА-52', 3);
+INSERT INTO groups (faculty_id, name, course)
+VALUES (1, 'ИП-71', 1);
+INSERT INTO groups (faculty_id, name, course)
+VALUES (1, 'ИП-72', 1);
+INSERT INTO groups (faculty_id, name, course)
+VALUES (2, 'ИПСА-61', 2);
+INSERT INTO groups (faculty_id, name, course)
+VALUES (2, 'ИПСА-62', 2);
+INSERT INTO groups (faculty_id, name, course)
+VALUES (2, 'ИПСА-44', 4);
+
