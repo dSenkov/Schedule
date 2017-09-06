@@ -23,6 +23,7 @@
            </p>
            <button type="submit" value="">Загрузить</button>
        </form>
+       <hr>
        <a href="/login"><button>Войти</button></a>
 </body>
 </html>

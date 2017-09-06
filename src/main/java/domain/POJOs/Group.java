@@ -1,11 +1,6 @@
 package domain.POJOs;
 
-import domain.enums.LessonType;
-import org.springframework.stereotype.Repository;
-
 import javax.persistence.*;
-import java.util.ArrayList;
-import java.util.List;
 
 @Entity
 @Table(name = "groups")

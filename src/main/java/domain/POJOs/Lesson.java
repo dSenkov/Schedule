@@ -1,6 +1,6 @@
 package domain.POJOs;
 
-import domain.enums.LessonType;
+import domain.LessonType;
 
 import javax.persistence.*;
 import java.time.DayOfWeek;

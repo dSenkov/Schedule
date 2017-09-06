@@ -1,4 +1,6 @@
 package domain.POJOs;
+import org.hibernate.validator.constraints.NotBlank;
+
 import javax.persistence.*;
 
 @Entity
@@ -10,6 +12,7 @@ public class Faculty {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
 
+    @NotBlank(message = "Обязательное поле")
     private String name;
 
     public Faculty() {

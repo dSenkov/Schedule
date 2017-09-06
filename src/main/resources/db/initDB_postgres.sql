@@ -2,15 +2,6 @@ DROP TABLE IF EXISTS lessons_groups;
 DROP TABLE IF EXISTS lessons;
 DROP TABLE IF EXISTS groups;
 DROP TABLE IF EXISTS facultys;
-DROP TABLE IF EXISTS users;
-
-CREATE TABLE users (
-  id          SERIAL PRIMARY KEY,
-  login       TEXT NOT NULL UNIQUE,
-  password    TEXT NOT NULL,
-  name        TEXT NOT NULL,
-  role        INTEGER NOT NULL
-);
 
 CREATE TABLE facultys (
   id          SERIAL PRIMARY KEY,

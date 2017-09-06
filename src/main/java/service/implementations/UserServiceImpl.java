@@ -1,33 +1,18 @@
 package service.implementations;
 
-import dao.interfaces.UserDao;
-import domain.users.User;
-import dto.LoggedUser;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.security.core.userdetails.UserDetails;
-import org.springframework.security.core.userdetails.UserDetailsService;
-import org.springframework.security.core.userdetails.UsernameNotFoundException;
-import org.springframework.security.crypto.password.PasswordEncoder;
+import domain.AdminTools;
 import org.springframework.stereotype.Service;
 import service.interfaces.UserService;
-
-import java.util.Optional;
+import javax.servlet.http.HttpServletRequest;
 
 @Service
-public class UserServiceImpl implements UserService, UserDetailsService {
-
-    private UserDao userDao;
-    private PasswordEncoder passwordEncoder;
-
-    @Autowired
-    public UserServiceImpl(UserDao userDao, PasswordEncoder passwordEncoder) {
-        this.userDao = userDao;
-        this.passwordEncoder = passwordEncoder;
-    }
+public class UserServiceImpl implements UserService {
 
     @Override
-    public UserDetails loadUserByUsername(String username) throws UsernameNotFoundException {
-        Optional<User> user = userDao.getByLogin(username);
-        return user.map(LoggedUser::new).orElse(null);
+    public boolean loginIsSuccessful(HttpServletRequest request) {
+        if (request.getParameter("login").equals(AdminTools.getLOGIN()) &&
+                request.getParameter("password").equals(AdminTools.getPASSWORD()))
+            return true;
+        else return false;
     }
 }
