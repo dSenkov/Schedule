@@ -10,7 +10,7 @@ public interface FacultyDao {
 
     List<Faculty> getAllSortedByName(String name, boolean desc, int offset, int limit);
 
-    List<Faculty> getAllSortedById(String name, int offset, int limit);
+    List<Faculty> getAllSortedById(String name, boolean desc, int offset, int limit);
 
     Faculty getById(Integer facultyId);
 

@@ -1,5 +1,8 @@
 package domain.POJOs;
 
+import org.hibernate.validator.constraints.NotBlank;
+import org.hibernate.validator.constraints.Range;
+
 import javax.persistence.*;
 
 @Entity
@@ -15,12 +18,19 @@ public class Group {
     @JoinColumn(name = "faculty_id")
     private Faculty faculty;
 
+    @NotBlank(message = "Обязательное поле")
     private String name;
+
+    @Range(min = 1, max = 6)
     private Integer course;
 
 
     public Group() {
         this.faculty = new Faculty();
+    }
+
+    public Group(Faculty faculty) {
+        this.faculty = faculty;
     }
 
     public Group(Integer id, String name, Integer course, Faculty faculty) {

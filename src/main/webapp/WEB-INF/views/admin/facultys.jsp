@@ -10,10 +10,10 @@
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
 <head>
-    <title>Админка</title>
+    <title>Админка | Факультеты</title>
 </head>
 <body>
-<h2>Таблица факультетов</h2>
+<h2>Таблица факультетов НТУУ "КПИ"</h2>
         <form>
             <p>
                 <label for="name">Название:</label>
@@ -30,8 +30,11 @@
                     <option value="<%= FacultySort.NAME_DESC.name() %>"
                             <%= FacultySort.NAME_DESC.name().equals(request.getParameter("sort")) ? "selected" : "" %>>Я-А
                     </option>
-                    <option value="<%= FacultySort.BY_ID.name() %>"
-                            <%= FacultySort.BY_ID.name().equals(request.getParameter("sort")) ? "selected" : "" %>>По ID
+                    <option value="<%= FacultySort.ID_ASC.name() %>"
+                            <%= FacultySort.ID_ASC.name().equals(request.getParameter("sort")) ? "selected" : "" %>>ID по возрастанию
+                    </option>
+                    <option value="<%= FacultySort.ID_DESC.name() %>"
+                            <%= FacultySort.ID_DESC.name().equals(request.getParameter("sort")) ? "selected" : "" %>>ID по убыванию
                     </option>
                 </select>
             </p>

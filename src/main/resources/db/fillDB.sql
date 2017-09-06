@@ -34,17 +34,17 @@ INSERT INTO facultys (name) VALUES ('ФТИ');
 
 
 INSERT INTO groups (faculty_id, name, course)
-VALUES (1, 'ИА-51', 3);
+VALUES (12, 'ИА-51', 3);
 INSERT INTO groups (faculty_id, name, course)
-VALUES (1, 'ИА-52', 3);
+VALUES (12, 'ИА-52', 3);
 INSERT INTO groups (faculty_id, name, course)
-VALUES (1, 'ИП-71', 1);
+VALUES (12, 'ИП-71', 1);
 INSERT INTO groups (faculty_id, name, course)
-VALUES (1, 'ИП-72', 1);
+VALUES (12, 'ИП-72', 1);
 INSERT INTO groups (faculty_id, name, course)
-VALUES (2, 'ИПСА-61', 2);
+VALUES (20, 'ИПСА-61', 2);
 INSERT INTO groups (faculty_id, name, course)
-VALUES (2, 'ИПСА-62', 2);
+VALUES (20, 'ИПСА-62', 2);
 INSERT INTO groups (faculty_id, name, course)
-VALUES (2, 'ИПСА-44', 4);
+VALUES (20, 'ИПСА-44', 4);
 

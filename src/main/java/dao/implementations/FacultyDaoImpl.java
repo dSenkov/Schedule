@@ -38,10 +38,10 @@ public class FacultyDaoImpl implements FacultyDao {
     }
 
     @Override
-    public List<Faculty> getAllSortedById(String name, int offset, int limit) {
+    public List<Faculty> getAllSortedById(String name, boolean desc, int offset, int limit) {
         TypedQuery<Faculty> query = this.entityManager.createQuery("SELECT f FROM Faculty f " +
                 "WHERE f.name LIKE :name " +
-                "ORDER BY f.id ", Faculty.class);
+                "ORDER BY f.id " + (desc ? "DESC " : "ASC "), Faculty.class);
         query.setParameter("name", StringUtils.isEmpty(name) ? "%" : "%" + name + "%");
         query.setFirstResult(offset);
         query.setMaxResults(limit);

@@ -30,8 +30,9 @@ public class FacultyServiceImpl implements FacultyService {
             case NAME_DESC:
                 result = this.facultyDao.getAllSortedByName(name, sort == FacultySort.NAME_DESC, offset, limit);
                 break;
-            case BY_ID:
-                result = this.facultyDao.getAllSortedById(name, offset, limit);
+            case ID_ASC:
+            case ID_DESC:
+                result = this.facultyDao.getAllSortedById(name, sort == FacultySort.ID_DESC, offset, limit);
                 break;
         }
         return result;
