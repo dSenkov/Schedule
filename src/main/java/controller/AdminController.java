@@ -128,6 +128,7 @@ public class AdminController {
                                Model model) {
         if (bindingResult.hasErrors()) {
             model.addAttribute("faculty", facultyService.getById(facultyId));
+            model.addAttribute("group", new Group(facultyService.getById(facultyId)));
             model.addAttribute("isNew", true);
             return "admin/group-edit";
         }
@@ -139,6 +140,7 @@ public class AdminController {
     public String showEditGroupPage(@PathVariable("facultyId") Integer facultyId,
                                     @PathVariable("groupId") Integer groupId,
                                     Model model) {
+        model.addAttribute("faculty", facultyService.getById(facultyId));
         model.addAttribute("group", groupService.getById(groupId));
         model.addAttribute("isNew", false);
         return "admin/group-edit";
@@ -149,11 +151,15 @@ public class AdminController {
                             @PathVariable("facultyId") Integer facultyId,
                             @PathVariable("groupId")   Integer groupId,
                             BindingResult bindingResult,
-                            RedirectAttributes redirectAttributes) {
+                            RedirectAttributes redirectAttributes, Model model) {
         if (bindingResult.hasErrors()) {
+            model.addAttribute("faculty", facultyService.getById(facultyId));
+            model.addAttribute("group", groupService.getById(groupId));
+            model.addAttribute("isNew", false);
             return "admin/group-edit";
         }
         group.setId(groupId);
+        group.setFaculty(facultyService.getById(facultyId));
         groupService.update(group);
         redirectAttributes.addFlashAttribute("updateIsSuccessful", true);
         return "redirect:/admin/facultys/" + facultyId + "/groups/" + groupId;

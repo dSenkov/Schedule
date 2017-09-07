@@ -30,9 +30,9 @@ public class LessonDaoImpl implements LessonDao {
 
     @Override
     public List<Lesson> getByGroup(Integer groupId) {
-      return entityManager.createQuery("SELECT l FROM Lesson l JOIN l.groups g WHERE g.id = :group_id")
-              .setParameter("group_id", groupId)
-              .getResultList();
+        Query query = entityManager.createQuery("SELECT l FROM Lesson l WHERE l.group.id = :group_id");
+        query.setParameter("group_id", groupId);
+        return query.getResultList();
     }
 
 

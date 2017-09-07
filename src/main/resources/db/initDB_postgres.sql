@@ -1,4 +1,3 @@
-DROP TABLE IF EXISTS lessons_groups;
 DROP TABLE IF EXISTS lessons;
 DROP TABLE IF EXISTS groups;
 DROP TABLE IF EXISTS facultys;
@@ -25,15 +24,11 @@ CREATE TABLE lessons (
   teacher     TEXT NOT NULL,
   type        TEXT NOT NULL,
   building    INTEGER NOT NULL,
-  classroom   INTEGER NOT NULL
+  classroom   INTEGER NOT NULL,
+  group_id    INTEGER NOT NULL,
+  FOREIGN KEY (group_id) REFERENCES groups (id) ON DELETE CASCADE
 );
 
-CREATE TABLE lessons_groups (
-  lesson_id   INTEGER NOT NULL,
-  group_id    INTEGER NOT NULL,
-  FOREIGN KEY (lesson_id) REFERENCES lessons  (id) ON DELETE CASCADE,
-  FOREIGN KEY (group_id)  REFERENCES groups   (id) ON DELETE CASCADE
-);
 
 
 

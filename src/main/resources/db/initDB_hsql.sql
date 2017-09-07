@@ -1,4 +1,3 @@
-DROP TABLE IF EXISTS lessons_groups;
 DROP TABLE IF EXISTS lessons;
 DROP SEQUENCE IF EXISTS lessons_id_seq;
 DROP TABLE IF EXISTS groups;
@@ -31,13 +30,9 @@ CREATE TABLE lessons (
   teacher       LONGVARCHAR NOT NULL,
   type          LONGVARCHAR NOT NULL,
   building      INTEGER NOT NULL,
-  classroom     INTEGER NOT NULL
+  classroom     INTEGER NOT NULL,
+  group_id      INTEGER NOT NULL,
+  FOREIGN KEY (group_id) REFERENCES groups (id) ON DELETE CASCADE
 );
 
-CREATE TABLE lessons_groups (
-  lesson_id    INTEGER NOT NULL,
-  group_id     INTEGER NOT NULL,
-  FOREIGN KEY (lesson_id) REFERENCES lessons (id) ON DELETE CASCADE,
-  FOREIGN KEY (group_id)  REFERENCES groups  (id) ON DELETE CASCADE
-);
 

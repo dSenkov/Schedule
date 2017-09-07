@@ -1,4 +1,3 @@
-DELETE FROM lessons_groups;
 DELETE FROM lessons;
 ALTER SEQUENCE lessons_id_seq RESTART WITH 1;
 DELETE FROM groups;

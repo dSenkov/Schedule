@@ -15,8 +15,7 @@ public class Faculty {
     @NotBlank(message = "Обязательное поле")
     private String name;
 
-    public Faculty() {
-    }
+    public Faculty() { }
 
     public Faculty(Integer id, String name) {
         this.id = id;
@@ -34,5 +33,13 @@ public class Faculty {
     }
     public void setName(String name) {
         this.name = name;
+    }
+
+    @Override
+    public String toString() {
+        return "Faculty{" +
+                "id=" + id +
+                ", name='" + name + '\'' +
+                '}';
     }
 }

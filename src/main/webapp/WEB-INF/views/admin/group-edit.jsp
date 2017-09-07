@@ -7,8 +7,9 @@
     <title>${isNew ? "Новая группа" : "Редактирование группы ".concat(group.name)}</title>
 </head>
 <body>
-    <form:form modelAttribute="group">
-        <form:hidden path="id"/>
+    <form:form method="post" modelAttribute="group">
+        Faculty = ${faculty} <br>
+        Group = ${group}
         <p>
             <label for="name">Название:</label><br>
             <form:input path="name" />
@@ -17,18 +18,20 @@
         <p>
             <label>Курс:</label> <br/>
             <label for="radio1">1</label>
-            <form:radiobutton id="radio1" path="course" value="1" checked="checked"/>
+            <form:radiobutton id="radio1" path="course" value="1" checked="checked"/><br>
             <label for="radio2">2</label>
-            <form:radiobutton id="radio2" path="course" value="2"/>
+            <form:radiobutton id="radio2" path="course" value="2"/><br>
             <label for="radio3">3</label>
-            <form:radiobutton id="radio3" path="course" value="3"/>
+            <form:radiobutton id="radio3" path="course" value="3"/><br>
             <label for="radio4">4</label>
-            <form:radiobutton id="radio4" path="course" value="4"/>
+            <form:radiobutton id="radio4" path="course" value="4"/><br>
             <label for="radio5">5</label>
-            <form:radiobutton id="radio5" path="course" value="5"/>
+            <form:radiobutton id="radio5" path="course" value="5"/><br>
             <label for="radio6">6</label>
-            <form:radiobutton id="radio6" path="course" value="6"/>
+            <form:radiobutton id="radio6" path="course" value="6"/><br>
         </p>
+            <form:hidden path="id"/>
+            <form:hidden path="faculty.id" value="${faculty.id}"/>
         <a href="/admin/facultys/${faculty.id}/groups"><button type="button">Вернуться</button></a>
         <button type="submit">Сохранить</button>
     </form:form>

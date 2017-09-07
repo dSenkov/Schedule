@@ -64,4 +64,14 @@ public class Group {
     public void setFaculty(Faculty faculty) {
         this.faculty = faculty;
     }
+
+    @Override
+    public String toString() {
+        return "Group{" +
+                "id=" + id +
+                ", faculty=" + faculty +
+                ", name='" + name + '\'' +
+                ", course=" + course +
+                '}';
+    }
 }

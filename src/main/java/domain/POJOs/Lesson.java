@@ -24,17 +24,15 @@ public class Lesson {
     private Integer     building;
     private Integer     classroom;
 
-    @ManyToMany(fetch = FetchType.EAGER)
-    @JoinTable(name = "lessons_groups",
-            joinColumns = @JoinColumn(name = "lesson_id"),
-            inverseJoinColumns = @JoinColumn(name = "group_id"))
-    private List<Group> groups;
+    @ManyToOne(fetch = FetchType.EAGER)
+    @JoinColumn(name = "group_id")
+    private Group group;
 
     public Lesson() {
-        this.groups = new ArrayList<>();
+        this.group = new Group();
     }
 
-    public Lesson(Integer id, boolean firstWeek, DayOfWeek day, Integer number, String subject, LessonType type, Integer building, Integer classroom, String teacher, List<Group> groups) {
+    public Lesson(Integer id, boolean firstWeek, DayOfWeek day, Integer number, String subject, LessonType type, Integer building, Integer classroom, String teacher, Group group) {
         this.id = id;
         this.firstWeek = firstWeek;
         this.day = day;
@@ -44,7 +42,7 @@ public class Lesson {
         this.building = building;
         this.classroom = classroom;
         this.teacher = teacher;
-        this.groups = groups;
+        this.group = group;
     }
 
     public Integer getId() {
@@ -101,12 +99,10 @@ public class Lesson {
     public void setTeacher(String teacher) {
         this.teacher = teacher;
     }
-    public List<Group> getGroups() {
-        return groups;
+    public Group getGroup() {
+        return group;
     }
-    public void setGroups(List<Group> groups) {
-        this.groups = groups;
+    public void setGroup(Group group) {
+        this.group = group;
     }
-
-
 }
