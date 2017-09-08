@@ -6,3 +6,5 @@ public enum LessonType {
     LAB,
     CONSULTATION
 }
+
+

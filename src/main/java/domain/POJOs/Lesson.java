@@ -16,11 +16,13 @@ public class Lesson {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer     id;
     private boolean     firstWeek;
+    @Enumerated(EnumType.ORDINAL)
     private DayOfWeek   day;
     private Integer     number;
     private String      subject;
-    private String      teacher;
+    @Enumerated(EnumType.STRING)
     private LessonType  type;
+    private String      teacher;
     private Integer     building;
     private Integer     classroom;
 
@@ -104,5 +106,21 @@ public class Lesson {
     }
     public void setGroup(Group group) {
         this.group = group;
+    }
+
+    @Override
+    public String toString() {
+        return "Lesson{" +
+                "id=" + id +
+                ", firstWeek=" + firstWeek +
+                ", day=" + day +
+                ", number=" + number +
+                ", subject='" + subject + '\'' +
+                ", type=" + type +
+                ", teacher='" + teacher + '\'' +
+                ", building=" + building +
+                ", classroom=" + classroom +
+                ", group=" + group +
+                '}';
     }
 }

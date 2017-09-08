@@ -1,5 +1,6 @@
 package controller;
 
+import service.implementations.ViewService;
 import domain.FacultySort;
 import domain.GroupSort;
 import domain.POJOs.Faculty;
@@ -14,7 +15,6 @@ import service.interfaces.FacultyService;
 import service.interfaces.GroupService;
 import service.interfaces.LessonService;
 
-import javax.persistence.criteria.CriteriaBuilder;
 import javax.validation.Valid;
 
 
@@ -25,13 +25,16 @@ public class AdminController {
     private FacultyService facultyService;
     private GroupService groupService;
     private LessonService lessonService;
+    private ViewService viewService;
+
     private final int PAGE_SIZE = 5;
 
     @Autowired
-    public AdminController(FacultyService facultyService, GroupService groupService, LessonService lessonService) {
+    public AdminController(FacultyService facultyService, GroupService groupService, LessonService lessonService, ViewService viewService) {
         this.facultyService = facultyService;
         this.groupService = groupService;
         this.lessonService = lessonService;
+        this.viewService = viewService;
     }
 ////////////////////////////////////////// F A C U L T Y S ////////////////////////////////////////////////////////////
 
@@ -163,6 +166,7 @@ public class AdminController {
         groupService.update(group);
         redirectAttributes.addFlashAttribute("updateIsSuccessful", true);
         return "redirect:/admin/facultys/" + facultyId + "/groups/" + groupId;
+
     }
 
     @PostMapping("/facultys/{facultyId}/groups/{groupId}/delete")
@@ -178,7 +182,11 @@ public class AdminController {
                                     @PathVariable("groupId") Integer groupId, Model model){
         model.addAttribute("faculty", facultyService.getById(facultyId));
         model.addAttribute("group", groupService.getById(groupId));
-        model.addAttribute("lessonList", lessonService.getByGroup(groupId));
+
+        model.addAttribute("wholeLessonList", lessonService.getByGroup(groupId));
+        model.addAttribute("lessonsOfTheFirstWeek", lessonService.getLessonsOfTheWeek(groupId, true));
+        model.addAttribute("lessonsOfTheSecondWeek", lessonService.getLessonsOfTheWeek(groupId, false));
+        model.addAttribute("viewService", viewService);
         return "admin/lessons";
     }
 

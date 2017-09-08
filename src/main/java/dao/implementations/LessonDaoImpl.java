@@ -8,6 +8,7 @@ import org.springframework.transaction.annotation.Transactional;
 import javax.persistence.EntityManager;
 import javax.persistence.PersistenceContext;
 import javax.persistence.Query;
+import java.time.DayOfWeek;
 import java.util.List;
 
 @Repository
@@ -30,10 +31,18 @@ public class LessonDaoImpl implements LessonDao {
 
     @Override
     public List<Lesson> getByGroup(Integer groupId) {
-        Query query = entityManager.createQuery("SELECT l FROM Lesson l WHERE l.group.id = :group_id");
+        Query query = entityManager.createQuery("SELECT l FROM Lesson l WHERE l.group.id = :group_id", Lesson.class);
         query.setParameter("group_id", groupId);
         return query.getResultList();
     }
 
-
+    @Override
+    public List<Lesson> getLessonsOfTheDay(Integer groupId, boolean firstWeek, DayOfWeek dayOfWeek) {
+        Query query = entityManager.createQuery("SELECT l FROM Lesson l WHERE l.group.id = :group_id " +
+        "AND l.firstWeek = :firstweek AND l.day = :day ORDER BY l.number", Lesson.class);
+        query.setParameter("group_id", groupId);
+        query.setParameter("firstweek", firstWeek);
+        query.setParameter("day", dayOfWeek);
+        return query.getResultList();
+    }
 }

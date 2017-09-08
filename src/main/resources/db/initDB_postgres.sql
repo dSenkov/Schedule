@@ -18,7 +18,7 @@ CREATE TABLE groups (
 CREATE TABLE lessons (
   id          SERIAL PRIMARY KEY,
   firstweek   BOOLEAN NOT NULL,
-  day         TEXT NOT NULL,
+  day         INTEGER NOT NULL,
   number      INTEGER NOT NULL,
   subject     TEXT NOT NULL,
   teacher     TEXT NOT NULL,

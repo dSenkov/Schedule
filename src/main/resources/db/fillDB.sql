@@ -30,8 +30,6 @@ INSERT INTO facultys (name) VALUES ('ИПИ');
 INSERT INTO facultys (name) VALUES ('ИЭЭ');
 INSERT INTO facultys (name) VALUES ('ИССЗИ');
 INSERT INTO facultys (name) VALUES ('ФТИ');
-
-
 INSERT INTO groups (faculty_id, name, course)
 VALUES (12, 'ИА-51', 3);
 INSERT INTO groups (faculty_id, name, course)
@@ -47,3 +45,52 @@ VALUES (20, 'ИПСА-62', 2);
 INSERT INTO groups (faculty_id, name, course)
 VALUES (20, 'ИПСА-44', 4);
 
+INSERT INTO lessons (firstweek, day, number, subject, teacher, type, building, classroom, group_id)
+VALUES (TRUE, 0, 2, 'Основы ТАУ', 'Репникова Н. Б.', 'LECTURE', 18, 307, 1);
+INSERT INTO lessons (firstweek, day, number, subject, teacher, type, building, classroom, group_id)
+VALUES (TRUE, 0, 3, 'Комп. электр. 2', 'Новацкий А. А.', 'LECTURE', 18, 307, 1);
+INSERT INTO lessons (firstweek, day, number, subject, teacher, type, building, classroom, group_id)
+VALUES (TRUE, 0, 4, 'Комп. электр. 2', 'Новацкий А. А.', 'LAB', 18, 517, 1);
+INSERT INTO lessons (firstweek, day, number, subject, teacher, type, building, classroom, group_id)
+VALUES (TRUE, 2, 1, 'Мод. проц. и сист.', 'Жеребко В. А.', 'LECTURE', 18, 307, 1);
+INSERT INTO lessons (firstweek, day, number, subject, teacher, type, building, classroom, group_id)
+VALUES (TRUE, 2, 2, 'Мод. проц. и сист.', 'Жеребко В. А.', 'PRACTISE', 18, 309, 1);
+INSERT INTO lessons (firstweek, day, number, subject, teacher, type, building, classroom, group_id)
+VALUES (TRUE, 2, 3, 'Основы ТАУ', 'Репникова Н. Б.', 'LAB', 18, 534, 1);
+INSERT INTO lessons (firstweek, day, number, subject, teacher, type, building, classroom, group_id)
+VALUES (TRUE, 2, 4, 'Комп. крипт.', 'Дорошенко Е. С.', 'LAB', 18, 533, 1);
+INSERT INTO lessons (firstweek, day, number, subject, teacher, type, building, classroom, group_id)
+VALUES (TRUE, 3, 3, 'СТП-2', 'Хмелюк М. С.', 'LAB', 18, 517, 1);
+INSERT INTO lessons (firstweek, day, number, subject, teacher, type, building, classroom, group_id)
+VALUES (TRUE, 3, 4, 'ОТИП-1', 'Моргаль О. М.', 'LAB', 18, 517, 1);
+INSERT INTO lessons (firstweek, day, number, subject, teacher, type, building, classroom, group_id)
+VALUES (TRUE, 4, 1, 'Экономика-1', 'Шевчук Е. А.', 'LECTURE', 18, 306, 1);
+INSERT INTO lessons (firstweek, day, number, subject, teacher, type, building, classroom, group_id)
+VALUES (TRUE, 4, 2, 'СТП-2', 'Амонс А. А.', 'LECTURE', 18, 306, 1);
+INSERT INTO lessons (firstweek, day, number, subject, teacher, type, building, classroom, group_id)
+VALUES (TRUE, 4, 3, 'Комп. крипт.', 'Полторак В. П.', 'LECTURE', 18, 306, 1);
+INSERT INTO lessons (firstweek, day, number, subject, teacher, type, building, classroom, group_id)
+VALUES (TRUE, 4, 4, 'Англ. язык', 'Бондаренко А. И.', 'PRACTISE', 18, 531, 1);
+
+INSERT INTO lessons (firstweek, day, number, subject, teacher, type, building, classroom, group_id)
+VALUES (FALSE , 0, 2, 'Основы ТАУ', 'Репникова Н. Б.', 'LECTURE', 18, 307, 1);
+INSERT INTO lessons (firstweek, day, number, subject, teacher, type, building, classroom, group_id)
+VALUES (FALSE , 0, 3, 'Комп. электр. 2', 'Новацкий А. А.', 'LECTURE', 18, 307, 1);
+INSERT INTO lessons (firstweek, day, number, subject, teacher, type, building, classroom, group_id)
+VALUES (FALSE, 2, 1, 'Мод. проц. и сист.', 'Жеребко В. А.', 'LECTURE', 18, 307, 1);
+INSERT INTO lessons (firstweek, day, number, subject, teacher, type, building, classroom, group_id)
+VALUES (FALSE, 2, 2, 'Экономика-1', 'Шевчук Е. А.', 'PRACTISE', 18, 231, 1);
+INSERT INTO lessons (firstweek, day, number, subject, teacher, type, building, classroom, group_id)
+VALUES (FALSE, 2, 3, 'Основы ТАУ', 'Репникова Н. Б.', 'LAB', 18, 534, 1);
+INSERT INTO lessons (firstweek, day, number, subject, teacher, type, building, classroom, group_id)
+VALUES (FALSE, 2, 4, 'Комп. крипт.', 'Дорошенко Е. С.', 'LAB', 18, 533, 1);
+INSERT INTO lessons (firstweek, day, number, subject, teacher, type, building, classroom, group_id)
+VALUES (FALSE, 3, 2, 'ОТИП-1', 'Моргаль О. М.', 'LECTURE', 18, 307, 1);
+INSERT INTO lessons (firstweek, day, number, subject, teacher, type, building, classroom, group_id)
+VALUES (FALSE, 3, 3, 'СТП-2', 'Хмелюк М. С.', 'LAB', 18, 517, 1);
+INSERT INTO lessons (firstweek, day, number, subject, teacher, type, building, classroom, group_id)
+VALUES (FALSE, 4, 2, 'СТП-2', 'Амонс А. А.', 'LECTURE', 18, 306, 1);
+INSERT INTO lessons (firstweek, day, number, subject, teacher, type, building, classroom, group_id)
+VALUES (FALSE, 4, 3, 'Комп. крипт.', 'Полторак В. П.', 'LECTURE', 18, 306, 1);
+INSERT INTO lessons (firstweek, day, number, subject, teacher, type, building, classroom, group_id)
+VALUES (FALSE, 4, 4, 'Англ. язык', 'Бондаренко А. И.', 'PRACTISE', 18, 531, 1);
