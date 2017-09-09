@@ -18,7 +18,7 @@ public class Group {
     @JoinColumn(name = "faculty_id")
     private Faculty faculty;
 
-    @NotBlank(message = "Обязательное поле")
+    @NotBlank(message = "Укажите название группы.")
     private String name;
 
     @Range(min = 1, max = 6)

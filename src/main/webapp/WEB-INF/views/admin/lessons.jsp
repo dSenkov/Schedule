@@ -1,5 +1,3 @@
-<%@ page import="service.implementations.ViewService" %>
-<%@ page import="java.time.DayOfWeek" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
@@ -21,24 +19,28 @@
             </tr>
             <c:forEach var="day" begin="0" end="5">
                 <tr>
-                <th>${viewService.getDayByNumber(day+1)}</th>
-                <c:forEach var="lessonNumber" begin="1" end="5">
-                    <c:choose>
-                        <c:when test="${lessonsOfTheFirstWeek.get(day).containsKey(lessonNumber)}">
-                            <td>
-                                    ${lessonsOfTheFirstWeek.get(day).get(lessonNumber).subject} <button>X</button> <br>
-                                    ${viewService.lessonTypeToRussian(lessonsOfTheFirstWeek.get(day).get(lessonNumber).type)}
-                                    ${lessonsOfTheFirstWeek.get(day).get(lessonNumber).building}-${lessonsOfTheFirstWeek.get(day).get(lessonNumber).classroom} <br>
-                                    ${lessonsOfTheFirstWeek.get(day).get(lessonNumber).teacher}
-                            </td>
-                        </c:when>
-                        <c:otherwise>
-                            <td align="center">
-                                <button>+</button>
-                            </td>
-                        </c:otherwise>
-                    </c:choose>
-                </c:forEach>
+                    <th>${viewService.getDayByNumber(day+1)}</th>
+                    <c:forEach var="lessonNumber" begin="1" end="5">
+                        <c:choose>
+                                <c:when test="${lessonsOfTheFirstWeek.get(day).containsKey(lessonNumber)}">
+                                    <td>
+                                        <c:set var="lesson1W" value="${lessonsOfTheFirstWeek.get(day).get(lessonNumber)}"/>
+                                        <jsp:useBean id="lesson1W" type="domain.POJOs.Lesson"/>
+                                            ${lesson1W.subject} <a href = "/admin/facultys/${faculty.id}/groups/${group.id}/lessons/${lesson1W.id}/delete"><button>X</button></a> <br>
+                                            ${viewService.lessonTypeToRussian(lesson1W.type)}
+                                            ${lesson1W.building}-${lesson1W.classroom} <br>
+                                            ${lesson1W.teacher}
+                                    </td>
+                                </c:when>
+                                <c:otherwise>
+                                    <td align="center">
+                                        <a href="/admin/facultys/${faculty.id}/groups/${group.id}/lessons/newLesson?firstWeek=${true}&day=${day}&lessonNumber=${lessonNumber}">
+                                            <button>+</button>
+                                        </a>
+                                    </td>
+                                </c:otherwise>
+                        </c:choose>
+                    </c:forEach>
                 </tr>
             </c:forEach>
         </table>
@@ -58,19 +60,23 @@
                 <th>${viewService.getDayByNumber(day+1)}</th>
                 <c:forEach var="lessonNumber" begin="1" end="5">
                     <c:choose>
-                        <c:when test="${lessonsOfTheSecondWeek.get(day).containsKey(lessonNumber)}">
-                            <td>
-                                    ${lessonsOfTheSecondWeek.get(day).get(lessonNumber).subject} <button>X</button> <br>
-                                    ${viewService.lessonTypeToRussian(lessonsOfTheSecondWeek.get(day).get(lessonNumber).type)}
-                                    ${lessonsOfTheSecondWeek.get(day).get(lessonNumber).building}-${lessonsOfTheSecondWeek.get(day).get(lessonNumber).classroom} <br>
-                                    ${lessonsOfTheSecondWeek.get(day).get(lessonNumber).teacher}
-                            </td>
-                        </c:when>
-                        <c:otherwise>
-                            <td align="center">
-                                <button>+</button>
-                            </td>
-                        </c:otherwise>
+                            <c:when test="${lessonsOfTheSecondWeek.get(day).containsKey(lessonNumber)}">
+                                <td>
+                                    <c:set var="lesson2W" value="${lessonsOfTheSecondWeek.get(day).get(lessonNumber)}"/>
+                                    <jsp:useBean id="lesson2W" type="domain.POJOs.Lesson"/>
+                                        ${lesson2W.subject} <a href = "/admin/facultys/${faculty.id}/groups/${group.id}/lessons/${lesson2W.id}/delete"><button>X</button></a> <br>
+                                        ${viewService.lessonTypeToRussian(lesson2W.type)}
+                                        ${lesson2W.building}-${lesson2W.classroom} <br>
+                                        ${lesson2W.teacher}
+                                </td>
+                            </c:when>
+                            <c:otherwise>
+                                <td align="center">
+                                    <a href="/admin/facultys/${faculty.id}/groups/${group.id}/lessons/newLesson?firstWeek=${false}&day=${day}&lessonNumber=${lessonNumber}">
+                                        <button>+</button>
+                                    </a>
+                                </td>
+                            </c:otherwise>
                     </c:choose>
                 </c:forEach>
             </tr>

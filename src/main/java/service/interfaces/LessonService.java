@@ -9,9 +9,16 @@ import java.util.Map;
 public interface LessonService {
 
     List<Lesson> getAll();
-    Lesson getById (Integer lessonId);
-    List<Lesson> getByGroup (Integer groupId);
+
+    Lesson getById(Integer lessonId);
+
+    List<Lesson> getByGroup(Integer groupId);
 
     Map<Integer, Lesson> getMapForLessonsOfTheDay(Integer groupId, boolean firstWeek, DayOfWeek dayOfWeek);
+
     List<Map<Integer, Lesson>> getLessonsOfTheWeek(Integer groupId, boolean firstWeek);
+
+    Lesson create (Lesson lesson);
+
+    void delete(Integer lessonId);
 }

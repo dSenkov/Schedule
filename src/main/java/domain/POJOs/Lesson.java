@@ -1,8 +1,13 @@
 package domain.POJOs;
 
 import domain.LessonType;
+import org.hibernate.validator.constraints.NotBlank;
+import org.hibernate.validator.constraints.Range;
 
 import javax.persistence.*;
+import javax.validation.constraints.Digits;
+import javax.validation.constraints.Min;
+import javax.validation.constraints.NotNull;
 import java.time.DayOfWeek;
 import java.util.ArrayList;
 import java.util.List;
@@ -18,20 +23,33 @@ public class Lesson {
     private boolean     firstWeek;
     @Enumerated(EnumType.ORDINAL)
     private DayOfWeek   day;
+    @Range(min = 1, max = 5)
     private Integer     number;
+    @NotBlank(message = "Укажите название предмета.")
     private String      subject;
     @Enumerated(EnumType.STRING)
     private LessonType  type;
+    @NotBlank(message = "Укажите имя преподователя.")
     private String      teacher;
+    @NotNull(message = "Пожалуйста, укажите номер корпуса.")
+    @Min(value = 1, message = "Номер корпуса должен быть целым числом больше нуля.")
     private Integer     building;
+    @NotNull(message = "Пожалуйста, укажите номер аудитории.")
+    @Min(value = 1, message = "Номер аудитории должен быть целым числом больше нуля.")
     private Integer     classroom;
-
     @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "group_id")
     private Group group;
 
     public Lesson() {
         this.group = new Group();
+    }
+
+    public Lesson(Group group, boolean firstWeek, Integer day, Integer number) {
+        this.group = group;
+        this.firstWeek = firstWeek;
+        this.day = DayOfWeek.of(day);
+        this.number = number;
     }
 
     public Lesson(Integer id, boolean firstWeek, DayOfWeek day, Integer number, String subject, LessonType type, Integer building, Integer classroom, String teacher, Group group) {

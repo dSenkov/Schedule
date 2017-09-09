@@ -45,4 +45,23 @@ public class LessonDaoImpl implements LessonDao {
         query.setParameter("day", dayOfWeek);
         return query.getResultList();
     }
+
+    @Override
+    @Transactional
+    public Lesson save(Lesson lesson) {
+        if (lesson.getId() == null) {
+            entityManager.persist(lesson);
+            return lesson;
+        } else {
+            return entityManager.merge(lesson);
+        }
+    }
+
+    @Override
+    @Transactional
+    public boolean delete(Integer lessonId) {
+        Query query = entityManager.createQuery("DELETE FROM Lesson l WHERE l.id = :lesson_id");
+        query.setParameter("lesson_id", lessonId);
+        return query.executeUpdate() != 0;
+    }
 }

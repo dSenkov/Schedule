@@ -12,7 +12,7 @@ public class Faculty {
     @GeneratedValue(strategy = GenerationType.IDENTITY)
     private Integer id;
 
-    @NotBlank(message = "Обязательное поле")
+    @NotBlank(message = "Укажите название факультета.")
     private String name;
 
     public Faculty() { }

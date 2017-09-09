@@ -51,4 +51,14 @@ public class LessonServiceImpl implements LessonService {
         }
         return resultList;
     }
+
+    @Override
+    public Lesson create(Lesson lesson) {
+        return lessonDao.save(lesson);
+    }
+
+    @Override
+    public void delete(Integer lessonId) {
+        lessonDao.delete(lessonId);
+    }
 }
