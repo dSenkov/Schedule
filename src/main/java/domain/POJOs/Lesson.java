@@ -31,12 +31,14 @@ public class Lesson {
     private LessonType  type;
     @NotBlank(message = "Укажите имя преподователя.")
     private String      teacher;
-    @NotNull(message = "Пожалуйста, укажите номер корпуса.")
+
+    @NotNull(message = "Укажите номер корпуса.")
     @Min(value = 1, message = "Номер корпуса должен быть целым числом больше нуля.")
     private Integer     building;
-    @NotNull(message = "Пожалуйста, укажите номер аудитории.")
+    @NotNull(message = "Укажите номер аудитории.")
     @Min(value = 1, message = "Номер аудитории должен быть целым числом больше нуля.")
     private Integer     classroom;
+
     @ManyToOne(fetch = FetchType.EAGER)
     @JoinColumn(name = "group_id")
     private Group group;
@@ -45,10 +47,10 @@ public class Lesson {
         this.group = new Group();
     }
 
-    public Lesson(Group group, boolean firstWeek, Integer day, Integer number) {
+    public Lesson(Group group, boolean firstWeek, DayOfWeek dayOfWeek, Integer number) {
         this.group = group;
         this.firstWeek = firstWeek;
-        this.day = DayOfWeek.of(day);
+        this.day = dayOfWeek;
         this.number = number;
     }
 

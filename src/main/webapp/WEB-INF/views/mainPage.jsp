@@ -11,8 +11,8 @@
        <form method="post">
            <p>
                <label>Факультет:</label>
-               <select>
-                   <c:forEach items="${facultyList}" var="faculty">
+               <select id="facultySelect" onchange="loadGroups(this.value())">
+                   <c:forEach items="${facultys}" var="faculty">
                        <jsp:useBean id="faculty" class="domain.POJOs.Faculty"/>
                        <option value="${faculty}">${faculty.name}</option>
                    </c:forEach>
@@ -20,10 +20,18 @@
            </p>
            <p>
                <label>Группа:</label>
+               <select id="groupSelect">
+               </select>
            </p>
            <button type="submit" value="">Загрузить</button>
        </form>
        <hr>
        <a href="/login"><button>Войти</button></a>
+
+    <script>
+        function loadGroups(value) {
+        }
+    </script>
+
 </body>
 </html>

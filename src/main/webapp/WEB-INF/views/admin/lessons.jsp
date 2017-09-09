@@ -1,3 +1,4 @@
+<%@ page import="java.time.DayOfWeek" %>
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
 <html>
@@ -34,7 +35,7 @@
                                 </c:when>
                                 <c:otherwise>
                                     <td align="center">
-                                        <a href="/admin/facultys/${faculty.id}/groups/${group.id}/lessons/newLesson?firstWeek=${true}&day=${day}&lessonNumber=${lessonNumber}">
+                                        <a href="/admin/facultys/${faculty.id}/groups/${group.id}/lessons/newLesson?firstWeek=${true}&day=<%=DayOfWeek.of((Integer) pageContext.getAttribute("day") + 1 )%>&lessonNumber=${lessonNumber}">
                                             <button>+</button>
                                         </a>
                                     </td>

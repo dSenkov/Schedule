@@ -2,11 +2,12 @@ package service.implementations;
 
 import domain.LessonType;
 import org.springframework.stereotype.Service;
+import service.interfaces.ViewService;
 
 import java.time.DayOfWeek;
 
 @Service
-public class ViewService {
+public class ViewServiceImpl  implements ViewService{
 
     public String dayToRussian(DayOfWeek dayOfWeek) {
         String day = "";

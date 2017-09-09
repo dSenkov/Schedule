@@ -14,18 +14,17 @@ public class RootController {
 
     private FacultyService facultyService;
     private GroupService groupService;
-    private UserService userService;
 
     @Autowired
-    public RootController(FacultyService facultyService, GroupService groupService, UserService userService) {
+    public RootController(FacultyService facultyService, GroupService groupService) {
         this.facultyService = facultyService;
         this.groupService = groupService;
-        this.userService = userService;
     }
 
     @GetMapping("/")
     public String showMainPage(Model model) {
-        model.addAttribute("facultyList", facultyService.getAll());
+        model.addAttribute("facultys", facultyService.getAll());
+        model.addAttribute("groupService", groupService);
         return "mainPage";
     }
 

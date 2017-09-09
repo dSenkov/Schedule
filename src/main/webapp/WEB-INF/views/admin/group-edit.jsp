@@ -10,6 +10,7 @@
     <form:form method="post" modelAttribute="group">
         Faculty = ${faculty} <br>
         Group = ${group}
+        <form:hidden path="id"/>
         <p>
             <label for="name">Название:</label><br>
             <form:input path="name" />
@@ -30,7 +31,6 @@
             <label for="radio6">6</label>
             <form:radiobutton id="radio6" path="course" value="6"/><br>
         </p>
-            <form:hidden path="id"/>
             <form:hidden path="faculty.id" value="${faculty.id}"/>
         <a href="/admin/facultys/${faculty.id}/groups"><button type="button">Вернуться</button></a>
         <button type="submit">Сохранить</button>

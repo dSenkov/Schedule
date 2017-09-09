@@ -1,8 +1,7 @@
 package controller;
 
-import com.sun.org.apache.xpath.internal.operations.Bool;
 import domain.POJOs.Lesson;
-import service.implementations.ViewService;
+import service.implementations.ViewServiceImpl;
 import domain.FacultySort;
 import domain.GroupSort;
 import domain.POJOs.Faculty;
@@ -29,12 +28,12 @@ public class AdminController {
     private FacultyService facultyService;
     private GroupService groupService;
     private LessonService lessonService;
-    private ViewService viewService;
+    private ViewServiceImpl viewService;
 
     private final int PAGE_SIZE = 5;
 
     @Autowired
-    public AdminController(FacultyService facultyService, GroupService groupService, LessonService lessonService, ViewService viewService) {
+    public AdminController(FacultyService facultyService, GroupService groupService, LessonService lessonService, ViewServiceImpl viewService) {
         this.facultyService = facultyService;
         this.groupService = groupService;
         this.lessonService = lessonService;
@@ -130,8 +129,8 @@ public class AdminController {
 
     @PostMapping("facultys/{facultyId}/newGroup")
     public String saveNewGroup(@Valid @ModelAttribute Group group,
-                               @PathVariable("facultyId") Integer facultyId,
                                BindingResult bindingResult,
+                               @PathVariable("facultyId") Integer facultyId,
                                Model model) {
         if (bindingResult.hasErrors()) {
             model.addAttribute("faculty", facultyService.getById(facultyId));
@@ -155,9 +154,9 @@ public class AdminController {
 
     @PostMapping("facultys/{facultyId}/groups/{groupId}")
     public String editGroup(@Valid @ModelAttribute Group group,
+                            BindingResult bindingResult,
                             @PathVariable("facultyId") Integer facultyId,
                             @PathVariable("groupId")   Integer groupId,
-                            BindingResult bindingResult,
                             RedirectAttributes redirectAttributes, Model model) {
         if (bindingResult.hasErrors()) {
             model.addAttribute("faculty", facultyService.getById(facultyId));
@@ -202,7 +201,7 @@ public class AdminController {
         model.addAttribute("faculty", facultyService.getById(facultyId));
         model.addAttribute("group", groupService.getById(groupId));
         model.addAttribute("lesson", new Lesson(groupService.getById(groupId), Boolean.parseBoolean(request.getParameter("firstWeek")),
-                Integer.parseInt(request.getParameter ("day")) + 1, Integer.parseInt(request.getParameter("lessonNumber"))));
+                DayOfWeek.valueOf(request.getParameter ("day")), Integer.parseInt(request.getParameter("lessonNumber"))));
         return "admin/lesson-edit";
     }
 
