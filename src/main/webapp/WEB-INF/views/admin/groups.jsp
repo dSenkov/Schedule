@@ -23,10 +23,10 @@
             Курс:
             <br>
             <label for="min">Минимальный:</label>
-            <input type="text" id="min" name="min" value="${param.min}"/>
+            <input type="number" id="min" name="min" value="${param.min}"/>
             <br>
             <label for="max">Максимальный:</label>
-            <input type="text" id="max" name="max" value="${param.max}"/>
+            <input type="number" id="max" name="max" value="${param.max}"/>
         </p>
         <p>
             <label for="sort">Сортировка:</label>
