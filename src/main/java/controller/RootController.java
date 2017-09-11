@@ -38,22 +38,23 @@ public class RootController {
     }
 
     @PostMapping("/")
-    public String showGroupList(@RequestParam("selectedFaculty") Integer facultyId, Model model)
-    {
+    public String showGroupList(@RequestParam("selectedFaculty") Integer facultyId, Model model) {
         model.addAttribute("groupList", groupService.getByFaculty(facultyId));
         return "chooseGroup";
     }
 
     @GetMapping("/schedule")
-    public String showGroupSchedule(@RequestParam("selectedGroup") Integer groupId, Model model)
-    {
-        model.addAttribute("group", groupService.getById(groupId));
-        model.addAttribute("lessonsOfTheFirstWeek", lessonService.getLessonsOfTheWeek(groupId, true));
-        model.addAttribute("lessonsOfTheSecondWeek", lessonService.getLessonsOfTheWeek(groupId, false));
-        model.addAttribute("viewService", viewService);
-        return "groupLessonSchedule";
+    public String showGroupSchedule(@RequestParam("selectedGroup") Integer groupId, Model model) {
+        if (groupId.equals(null))
+            return "error";
+        else {
+            model.addAttribute("group", groupService.getById(groupId));
+            model.addAttribute("lessonsOfTheFirstWeek", lessonService.getLessonsOfTheWeek(groupId, true));
+            model.addAttribute("lessonsOfTheSecondWeek", lessonService.getLessonsOfTheWeek(groupId, false));
+            model.addAttribute("viewService", viewService);
+            return "groupLessonSchedule";
+        }
     }
-
 
 
 }

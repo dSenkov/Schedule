@@ -134,7 +134,6 @@ public class AdminController {
                                Model model) {
         if (bindingResult.hasErrors()) {
             model.addAttribute("faculty", facultyService.getById(facultyId));
-           /* model.addAttribute("group", new Group(facultyService.getById(facultyId)));*/
             model.addAttribute("isNew", true);
             return "admin/group-edit";
         }
@@ -160,7 +159,6 @@ public class AdminController {
                             RedirectAttributes redirectAttributes, Model model) {
         if (bindingResult.hasErrors()) {
             model.addAttribute("faculty", facultyService.getById(facultyId));
-           /* model.addAttribute("group", groupService.getById(groupId));*/
             model.addAttribute("isNew", false);
             return "admin/group-edit";
         }
@@ -193,7 +191,7 @@ public class AdminController {
         return "admin/lessons";
     }
 
-    @GetMapping("/facultys/{facultyId}/groups/{groupId}/lessons/newLesson") //?firstWeek={firstWeek}&day={day}&lessonNumber={lessonNumber}")
+    @GetMapping("/facultys/{facultyId}/groups/{groupId}/lessons/newLesson")
     public String showNewLessonpage(@PathVariable("facultyId") Integer facultyId,
                                     @PathVariable("groupId") Integer groupId,
                                    HttpServletRequest request, Model model)
@@ -215,14 +213,8 @@ public class AdminController {
         if (bindingResult.hasErrors()){
             model.addAttribute("faculty", facultyService.getById(facultyId));
             model.addAttribute("group", groupService.getById(groupId));
-            /*model.addAttribute("lesson", new Lesson(groupService.getById(groupId), Boolean.parseBoolean(request.getParameter("firstWeek")),
-                    Integer.parseInt(request.getParameter ("day")) + 1, Integer.parseInt(request.getParameter("lessonNumber"))));*/
             return "admin/lesson-edit";
         }
-       /* lesson.setGroup(groupService.getById(groupId));
-        lesson.setFirstWeek(Boolean.parseBoolean(request.getParameter("firstWeek")));
-        lesson.setDay(DayOfWeek.of(Integer.parseInt(request.getParameter ("day")) + 1));
-        lesson.setNumber(Integer.parseInt(request.getParameter("lessonNumber")));*/
         lessonService.create(lesson);
         return "redirect:/admin/facultys/" + facultyId + "/groups/" + groupId + "/lessons";
     }

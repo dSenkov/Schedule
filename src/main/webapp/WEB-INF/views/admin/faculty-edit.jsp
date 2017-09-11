@@ -1,30 +1,41 @@
 <%@ taglib prefix="c" uri="http://java.sun.com/jsp/jstl/core" %>
 <%@ taglib prefix="form" uri="http://www.springframework.org/tags/form" %>
-<%--
-  Created by IntelliJ IDEA.
-  User: Денис
-  Date: 9/5/2017
-  Time: 4:30 PM
-  To change this template use File | Settings | File Templates.
---%>
 <%@ page contentType="text/html;charset=UTF-8" language="java" %>
-<html>
+
+<!DOCTYPE html>
+<html lang="en">
 <head>
+    <!-- Required meta tags -->
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+    <!-- Bootstrap CSS -->
+    <link rel="stylesheet" href="https://maxcdn.bootstrapcdn.com/bootstrap/4.0.0-beta/css/bootstrap.min.css" integrity="sha384-/Y6pD6FV/Vv2HJnA6t+vslU6fwYXjCFtcEpHbNJ0lyAFsXTsjBbfaDjzALeQsN6M" crossorigin="anonymous">
+
     <title>${isNew ? "Новый факультет" : "Редактирование факультета ".concat(faculty.name)}</title>
 </head>
 <body>
-    <form:form modelAttribute="faculty">
-        <form:hidden path="id"/>
-        <label for="name">Название:</label><br>
-        <form:input path="name" />
-        <form:errors path="name" cssStyle="color: red"/>
-        <br><br>
-        <a href="/admin/facultys"><button type="button">Вернуться</button></a>
-        <button type="submit">Сохранить</button>
-    </form:form>
+<div id="main" class="container">
 
-    <c:if test="${updateIsSuccessful}">
-        <span style="color: green;">Изменения сохранены.</span>
-    </c:if>
+    <div class="row align-items-center" style="margin-top: 15%">
+        <div class="col-12 align-items-center">
+            <c:if test="${updateIsSuccessful}">
+                <div class="alert alert-success mt-5">Изменения сохранены</div>
+            </c:if>
+        <div class="row align-items-center">
+            <form:form modelAttribute="faculty" cssClass="align-content-center">
+                <form:hidden path="id"/>
+                <h4 class="align-items-center">Название:</h4>
+                <form:input path="name"  cssClass="align-content-center"/>
+                <form:errors path="name" cssClass="text-danger" cssStyle="align-self: center"/>
+                <br><br>
+                <a href="/admin/facultys"><button type="button" class="btn btn-primary">Вернуться</button></a>
+                <br><br>
+                <button type="submit" class="btn btn-success">Сохранить</button>
+            </form:form>
+        </div>
+        </div>
+    </div>
+</div>
 </body>
 </html>
